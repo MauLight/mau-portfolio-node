@@ -89,6 +89,9 @@ const start = async () => {
                     console.log(currentUser)
                     return { currentUser }
                 }
+                else {
+                    console.log('Authentication not received!!')
+                }
             },
         }),
     )
