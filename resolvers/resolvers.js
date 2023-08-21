@@ -25,6 +25,7 @@ const resolvers = {
     },
     Query: {
         me: (root, args, { currentUser }) => {
+            console.log('this is the current USER', currentUser)
             return currentUser
         },
         userCount: async () => User.collection.countDocuments(),
