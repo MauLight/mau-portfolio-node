@@ -1,0 +1,61 @@
+type User {
+  username: String!
+  passwordHash: String!
+  pic: String
+  bio: String
+  wall: String
+  posts: [Post]
+  friends: [User!]!
+  friendOf: [User]
+  id: ID!
+}
+
+type Token {
+  value: String!
+}
+
+type Post {
+  title: String!
+  author: User!
+  img: String!
+  body: String!
+  likes: Int!
+  tags: [String!]!
+  id: ID!
+}
+
+type Query {
+  postCount: Int!
+  userCount: Int!
+  allUsers: [User!]!
+  allPosts: [Post!]!
+  me: User
+}
+
+type Mutation {
+  createUser(username: String!, password: String!): User
+  login(username: String!, password: String!): Token
+  addFriend(friend: String!): User
+
+  addPost(
+    title: String!
+    img: String!
+    body: String!
+    likes: Int!
+    tags: [String!]!
+  ): Post
+
+  addLikes(title: String!, setLikesto: Int!): Post
+
+  editBio(bio: String!): User
+
+  editAvatar(pic: String!): User
+
+  editWall(wall: String!): User
+
+}
+
+type Subscription {
+  userAdded: User!
+  postAdded: Post!
+}
