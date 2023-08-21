@@ -85,6 +85,7 @@ const start = async () => {
                     const currentUser = await User.findById(decodedToken.id).populate(
                         'friends', 'posts'
                     )
+                    console.log('Fetching currentUser')
                     console.log(currentUser)
                     return { currentUser }
                 }
