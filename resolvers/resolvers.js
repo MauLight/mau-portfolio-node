@@ -88,8 +88,7 @@ const resolvers = {
             return {
                 value: jwt.sign(
                     userForToken,
-                    process.env.SECRET,
-                    { expiresIn: 60 * 60 }
+                    process.env.SECRET
                 )
             }
 
